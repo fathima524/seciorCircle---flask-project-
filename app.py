@@ -5,18 +5,22 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import smtplib
 from email.mime.text import MIMEText
+import os
 
 app = Flask(__name__)
-app.secret_key = "supersecretkey"
+app.secret_key = os.environ.get("SECRET_KEY")
 
-# ✅ Atlas connection URI
-app.config["MONGO_URI"] = "mongodb+srv://fathimahijaabirfan2:4A59jBnAksD8CHmk@seniorcirclecluster.z25trb9.mongodb.net/seniorCircle?retryWrites=true&w=majority&appName=seniorCircleCluster"
+# ✅ Atlas connection URI from environment
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 mongo = PyMongo(app)
 
 # ✅ Native PyMongo for users collection (reuse Atlas connection)
-client = MongoClient("mongodb+srv://fathimahijaabirfan2:4A59jBnAksD8CHmk@seniorcirclecluster.z25trb9.mongodb.net/seniorCircle?retryWrites=true&w=majority&appName=seniorCircleCluster")
+client = MongoClient(os.environ.get("MONGO_URI"))
 db = client['seniorCircle']
 users_collection = db['users']
+
+EMAIL_USER = os.environ.get("EMAIL_USER")
+EMAIL_PASS = os.environ.get("EMAIL_PASS")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -133,11 +137,11 @@ def send_rsvp():
     try:
         msg = MIMEText(body)
         msg['Subject'] = subject
-        msg['From'] = 'fathimahijaabirfan2@gmail.com'
+        msg['From'] = EMAIL_USER
         msg['To'] = email
 
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-            smtp.login('fathimahijaabirfan2@gmail.com', 'nbjw yqnj sjap pmtu')
+            smtp.login(EMAIL_USER, EMAIL_PASS)
             smtp.send_message(msg)
 
         return jsonify({"message": "RSVP confirmation sent!"})
@@ -217,4 +221,5 @@ def reset_password():
         return "<script>alert('Error resetting password.'); window.location='/forgot-password';</script>"
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
