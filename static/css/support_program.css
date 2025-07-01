@@ -1,0 +1,325 @@
+/* support_program.css - Matching the SeniorCircle theme */
+
+/* Variables for consistent color scheme */
+:root {
+    --primary: #3A5F8A;         /* Deeper, calming blue */
+    --primary-light: #6789B0;   /* Lighter blue for hover effects */
+    --secondary: #5A8C52;       /* Richer green */
+    --accent: #D68C56;          /* Brighter, warmer orange/copper */
+    --light-bg: #F8F8F8;        /* Cleaner off-white background */
+    --dark-text: #2B2B2B;       /* Darker text for better contrast */
+    --medium-text: #4D4D4D;     /* Medium text for secondary content */
+    --light-text: #FFFFFF;      /* White text for dark backgrounds */
+    --shadow: rgba(0, 0, 0, 0.12);  /* Enhanced shadow */
+    --border: #D8D8D8;          /* Lighter border color */
+    --success: #58A458;         /* Green for success messages */
+    --error: #D25F5F;           /* Red for errors */
+}
+
+/* Base styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+    font-size: 18px; /* Increased base font size for seniors */
+    font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Improved Typography */
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 2.3rem;
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--primary-light);
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Filters section */
+div:nth-of-type(1) {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow);
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+label {
+    font-weight: 600;
+    color: var(--medium-text);
+    font-size: 1.1rem;
+    margin-right: 0.5rem;
+}
+
+select, input[type="text"] {
+    padding: 0.8rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    flex: 1;
+    min-width: 150px;
+}
+
+select:focus, input[type="text"]:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+    outline: none;
+}
+
+button {
+    background-color: var(--primary);
+    color: var(--light-text);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: var(--primary-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Programs container */
+#programsContainer {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+#programsContainer p {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--medium-text);
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px var(--shadow);
+}
+
+/* Program card styling */
+.program-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px var(--shadow);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.program-card strong {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 0.8rem;
+    display: block;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+.program-card button {
+    background-color: var(--secondary);
+    margin-top: auto;
+    align-self: flex-end;
+    padding: 0.6rem 1.2rem;
+    margin-top: 1rem;
+}
+
+.program-card button:hover {
+    background-color: #4E7C46; /* Darker green */
+}
+
+/* Modal styling */
+#modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+    z-index: 1000;
+    padding: 2rem !important;
+    border: none !important;
+}
+
+#modal h3 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.8rem;
+}
+
+#modal h4 {
+    color: var(--secondary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+#modal p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+#modal strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Modal form styling */
+#helpForm {
+    margin-top: 1.5rem;
+}
+
+#helpForm input[type="text"],
+#helpForm textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#helpForm textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#helpForm button {
+    background-color: var(--secondary);
+    width: 100%;
+}
+
+#helpForm button:hover {
+    background-color: #4E7C46;
+}
+
+#modal button:last-child {
+    background-color: #888;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* Modal overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* No programs message */
+.no-programs {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px var(--shadow);
+    grid-column: 1 / -1;
+    font-size: 1.2rem;
+    color: var(--medium-text);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        padding: 1rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    div:nth-of-type(1) {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    label {
+        margin-bottom: 0.3rem;
+    }
+    
+    select, input[type="text"] {
+        width: 100%;
+    }
+    
+    #programsContainer {
+        grid-template-columns: 1fr;
+    }
+    
+    #modal {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
+
+/* Accessibility enhancements */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}

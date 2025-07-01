@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Support Programs - SeniorCircle</title>
+  <link rel="stylesheet" href="/static/css/support_program.css">
+</head>
+<body>
+
+  <h2>Support Programs</h2>
+
+  <!-- Filters -->
+  <div>
+    <label>Category:</label>
+    <select id="categoryFilter">
+      <option value="all">All</option>
+      <option value="food">Food Aid</option>
+      <option value="health">Healthcare</option>
+      <option value="legal">Legal Help</option>
+      <option value="financial">Financial Support</option>
+      <option value="home">Home Assistance</option>
+    </select>
+
+    <label>Location:</label>
+    <input type="text" id="locationFilter" placeholder="Enter location" />
+    <button onclick="applyFilters()">Apply Filters</button>
+  </div>
+
+  <!-- Program Cards -->
+  <div id="programsContainer"></div>
+
+  <!-- Modal -->
+  <div id="modal" style="display:none; border: 1px solid #ccc; padding: 20px; background: #eee;">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDescription"></p>
+    <p><strong>Location:</strong> <span id="modalLocation"></span></p>
+    <p><strong>Eligibility:</strong> <span id="modalEligibility"></span></p>
+    <p><strong>Contact:</strong> <span id="modalContact"></span></p>
+
+    <h4>Request Help</h4>
+    <form id="helpForm">
+      <input type="text" id="userName" placeholder="Your Name" required /><br />
+      <input type="text" id="userContact" placeholder="Contact Info" required /><br />
+      <textarea id="userNote" placeholder="Your Situation or Notes..." required></textarea><br />
+      <button type="submit">Submit Request</button>
+    </form>
+
+    <button onclick="closeModal()">Close</button>
+  </div>
+  <button id="goHomeBtn">Go to Home</button>
+
+  <script>
+  document.getElementById("goHomeBtn").addEventListener("click", function() {
+      window.location.href = "/";  // Flask route
+  });
+  </script>
+
+  <script defer src="/static/js/suppoprt_programms.js"></script>
+
+</body>
+</html>

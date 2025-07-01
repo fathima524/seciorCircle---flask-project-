@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeniorCircle - Home</title>
+    <link rel="stylesheet" href="/static/css/home_page.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to SeniorCircle</h1>
+        <p>Your one-stop destination for local services, social activities, and support programs.</p>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/support">Support Programs</a></li>
+                <li><a href="/community">Community</a></li>
+                <li id="auth-links"></li>
+            </ul>
+        </nav>        
+    </header>
+    
+   
+    <section id="events">
+        <h2>Featured Events</h2>
+        <ul>
+            <li>Yoga for Seniors - April 10, 2025 @ Community Center</li>
+            <li>Tech Help Workshop - April 15, 2025 @ Library</li>
+        </ul>
+    </section>
+    
+    <section id="testimonials">
+        <h2>What Our Users Say</h2>
+        <p>"SeniorCircle helped me find great social events!" - John Doe</p>
+        <p>"A fantastic resource for older adults!" - Jane Smith</p>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>About SeniorCircle</h3>
+                <p>Connecting seniors with local services, social activities, and support programs since 2023.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/">About Us</a></li>
+                    <li><a href="/">Contact Us</a></li>
+                    <li><a href="/">Privacy Policy</a></li>
+                    <li><a href="/">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="icon-envelope"></i> Email: info@seniorcircle.org</p>
+                <p><i class="icon-phone"></i> Phone: (555) 123-4567</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">Facebook</a>
+                    <a href="#" class="social-icon">Twitter</a>
+                    <a href="#" class="social-icon">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SeniorCircle. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function checkAuth() {
+            // Simulated authentication check (replace with real backend logic)
+            let loggedIn = false; // Change to true if user is logged in
+            let authLinks = document.getElementById("auth-links");
+            
+            if (loggedIn) {
+                authLinks.innerHTML = '<a href="/profile">Profile</a>';
+            } else {
+                authLinks.innerHTML = '<a href="/login">Login</a> | <a href="/signup">Sign Up</a>';
+            }
+        }
+        
+        window.onload = checkAuth;
+    </script>
+
+    <script src="/static/js/home_page.js"></script>
+</body>
+</html>

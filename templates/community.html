@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Community - SeniorCircle</title>
+  <link rel="stylesheet" href="/static/css/community.css">
+</head>
+<body>
+
+  <h2>SeniorCircle Community</h2>
+
+  <p>Welcome to the discussion board! Share your experiences, ask questions, or connect with others.</p>
+
+  <h3>Create a Post</h3>
+  <form onsubmit="handleSubmit(event)">
+
+    <label>Your Name:</label><br>
+    <input type="text" name="username" required><br><br>
+
+    <label>Message:</label><br>
+    <textarea name="message" rows="4" cols="50" required></textarea><br><br>
+
+    <input type="submit" value="Post">
+  </form>
+
+  <hr>
+
+  <h3>Recent Discussions</h3>
+
+  <p><strong>Mary J.</strong> (April 6, 2025)<br>
+  Does anyone know a good free yoga class nearby? I would love to join a group!</p>
+
+  <p><strong>Ravi Kumar</strong> (April 5, 2025)<br>
+  Thank you SeniorCircle for connecting me to Meals on Wheels. It has  been a lifesaver.</p>
+
+  <p><strong>Susan P.</strong> (April 4, 2025)<br>
+  I would love to start a knitting club. Anyone interested?</p>
+  <button id="goHomeBtn">Go to Home</button>
+
+  <script>
+  document.getElementById("goHomeBtn").addEventListener("click", function() {
+      window.location.href = "/";  // Flask route
+  });
+  </script>
+<script>
+  function handleSubmit(event) {
+      event.preventDefault(); 
+      alert("Your post has been submitted!");
+   
+      event.target.reset();
+  
+      
+  }
+  </script>
+  
+</body>
+</html>

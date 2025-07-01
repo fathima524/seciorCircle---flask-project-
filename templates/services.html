@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Services | SeniorCircle</title>
+    <link rel="stylesheet" href="/static/css/services.css"> <!-- Optional -->
+</head>
+<body>
+    <div class="container">
+        <h1>Select a Service Category</h1>
+        <div id="categoriesContainer" class="category-grid">
+            <!-- JS will fill this -->
+        </div>
+
+        <div id="servicesSection" style="display: none;">
+            <h2 id="categoryTitle"></h2>
+            <form id="searchForm" class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search services...">
+                <button type="submit">Search</button>
+            </form>
+            <div id="servicesContainer" class="services-list">
+                <!-- JS will fill this -->
+            </div>
+        </div>
+    </div>
+    <button id="goHomeBtn">Go to Home</button>
+
+<script>
+document.getElementById("goHomeBtn").addEventListener("click", function() {
+    window.location.href = "/";  // Flask route
+});
+</script>
+
+    
+
+    <script src="/static/js/services.js"></script>
+</body>
+</html>

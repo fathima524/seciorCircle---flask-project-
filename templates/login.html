@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SeniorCircle</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+    <header>
+        <h1>SeniorCircle</h1>
+    </header>
+    
+    <main>
+        <form action="/login" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+        
+        <p>Don't have an account? <a href="/register">Register</a></p>
+        <p><a href="/forgot-password">Forgot password?</a></p>
+
+    </main>
+    <script>
+        window.onload = function () {
+          const urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.get("error") === "1") {
+            alert("Invalid username or password!");
+          }
+        };
+      </script>
+      
+</body>
+</html>

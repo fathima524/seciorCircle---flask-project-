@@ -1,0 +1,239 @@
+/* community.css - Matching the SeniorCircle theme */
+
+/* Variables for consistent color scheme */
+:root {
+    --primary: #3A5F8A;         /* Deeper, calming blue */
+    --primary-light: #6789B0;   /* Lighter blue for hover effects */
+    --secondary: #5A8C52;       /* Richer green */
+    --accent: #D68C56;          /* Brighter, warmer orange/copper */
+    --light-bg: #F8F8F8;        /* Cleaner off-white background */
+    --dark-text: #2B2B2B;       /* Darker text for better contrast */
+    --medium-text: #4D4D4D;     /* Medium text for secondary content */
+    --light-text: #FFFFFF;      /* White text for dark backgrounds */
+    --shadow: rgba(0, 0, 0, 0.12);  /* Enhanced shadow */
+    --border: #D8D8D8;          /* Lighter border color */
+}
+
+/* Base styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+    font-size: 18px;
+    font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Typography */
+h2, h3 {
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2.2rem;
+    border-bottom: 3px solid var(--primary-light);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+/* Form styling */
+form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow);
+    margin: 1.5rem 0;
+}
+
+label {
+    font-weight: 600;
+    color: var(--medium-text);
+    font-size: 1.1rem;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0 1.2rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, textarea:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: var(--primary);
+    color: var(--light-text);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"]:hover {
+    background-color: var(--primary-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+input[type="submit"]:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Recent Discussions styling */
+.post-button {
+    background-color: var(--primary);
+    color: var(--light-text);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Horizontal rule */
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(58, 95, 138, 0), rgba(58, 95, 138, 0.75), rgba(58, 95, 138, 0));
+    margin: 2rem 0;
+}
+
+/* Recent Discussions section */
+.recent-discussions {
+    margin-top: 3rem;
+}
+
+.recent-discussions h3 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-light);
+}
+
+/* Discussion post styling */
+.discussion-post {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px var(--shadow);
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--primary);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.discussion-post:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.discussion-post:last-child {
+    margin-bottom: 2rem;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.post-author {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.post-date {
+    color: var(--medium-text);
+    font-size: 0.9rem;
+}
+
+.post-content {
+    line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        padding: 1rem;
+    }
+    
+    form {
+        padding: 1.5rem;
+    }
+    
+    .discussion-post {
+        padding: 1.2rem;
+    }
+}
+
+/* Accessibility */
+a:focus, button:focus, input:focus, textarea:focus {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+#goHomeBtn {
+    background-color: #3A5F8A;  /* Primary blue */
+    color: #FFFFFF;             /* White text */
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+}
+
+#goHomeBtn:hover {
+    background-color: #6789B0;  /* Lighter blue on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+#goHomeBtn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#goHomeBtn:focus {
+    outline: 3px solid #D68C56;  /* Orange accent for accessibility */
+    outline-offset: 2px;
+}

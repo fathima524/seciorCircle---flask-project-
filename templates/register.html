@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SeniorCircle</title>
+    <link rel="stylesheet" href="/static/css/register.css">
+</head>
+<body>
+    <header>
+        <h1>SeniorCircle</h1>
+    </header>
+    
+    <main>
+        <form action="/register" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"  minlength="3" maxlength="20" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"   minlength="6" required>
+            
+            <button type="submit">Register</button>
+        </form>
+        
+        <p>Already have an account? <a href="/login">Login</a></p>
+    </main>
+    <script>
+        window.onload = function () {
+          const urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.get("error") === "1") {
+            alert("User already exists!");
+          }
+        };
+      </script>
+      
+</body>
+</html>
