@@ -9,16 +9,16 @@ from email.mime.text import MIMEText
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
-# ✅ Connect Flask-PyMongo
-app.config["MONGO_URI"] = "mongodb://localhost:27017/seniorCircle"
+# ✅ Atlas connection URI
+app.config["MONGO_URI"] = "mongodb+srv://fathimahijaabirfan2:4A59jBnAksD8CHmk@seniorcirclecluster.z25trb9.mongodb.net/seniorCircle?retryWrites=true&w=majority&appName=seniorCircleCluster"
 mongo = PyMongo(app)
 
-# ✅ Native PyMongo for users collection
-client = MongoClient('mongodb://localhost:27017/')
+# ✅ Native PyMongo for users collection (reuse Atlas connection)
+client = MongoClient("mongodb+srv://fathimahijaabirfan2:4A59jBnAksD8CHmk@seniorcirclecluster.z25trb9.mongodb.net/seniorCircle?retryWrites=true&w=majority&appName=seniorCircleCluster")
 db = client['seniorCircle']
 users_collection = db['users']
 
-@app.route("/",methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def home():
     return render_template("home_page.html")
 
@@ -76,7 +76,6 @@ def get_services():
 def events():
     return render_template("events.html")
 
-# ✅ Event API routes using mongo.db
 @app.route("/api/events", methods=["GET"])
 def get_events():
     category = request.args.get("category", "").lower()
@@ -122,10 +121,6 @@ def update_event_status(event_id):
     mongo.db.events.update_one({"_id": ObjectId(event_id)}, {"$set": {"status": status}})
     return jsonify({"message": f"Event {status}."})
 
-
-
-
-
 @app.route('/send_rsvp', methods=['POST'])
 def send_rsvp():
     data = request.get_json()
@@ -149,7 +144,6 @@ def send_rsvp():
     except Exception as e:
         print("RSVP email error:", e)
         return jsonify({"message": "Failed to send RSVP email."}), 500
-
 
 @app.route("/support")
 def support():
